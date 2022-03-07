@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const { STRING } = Sequelize.DataTypes;
 const sequelize = new Sequelize(
-  process.env.DATABASE || "postgres://localhost/workshop"
+  process.env.DATABASE_URL || "postgres://localhost/workshop"
 );
 
 const Color = sequelize.define("color", {
