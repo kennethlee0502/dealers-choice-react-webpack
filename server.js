@@ -8,27 +8,21 @@ app.get("/", (req, res, next) =>
   res.sendFile(path.join(__dirname, "index.html"))
 );
 
-app.get(
-  "https://dealer-choice-webpack.herokuapp.com/api/color",
-  async (req, res, next) => {
-    try {
-      res.send(await Color.findAll());
-    } catch (ex) {
-      next(ex);
-    }
+app.get("/api/color", async (req, res, next) => {
+  try {
+    res.send(await Color.findAll());
+  } catch (ex) {
+    next(ex);
   }
-);
+});
 
-app.post(
-  "https://dealer-choice-webpack.herokuapp.com/api/color",
-  async (req, res, next) => {
-    try {
-      res.status(201).send(await Color.generateRandom());
-    } catch (ex) {
-      next(ex);
-    }
+app.post("/api/color", async (req, res, next) => {
+  try {
+    res.status(201).send(await Color.generateRandom());
+  } catch (ex) {
+    next(ex);
   }
-);
+});
 
 const start = async () => {
   try {
